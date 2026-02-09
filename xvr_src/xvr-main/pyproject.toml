@@ -1,0 +1,44 @@
+[project]
+name = "xvr"
+version = "0.0.0rc1"
+description = "Differentiable 2D/3D X-ray to volume registration"
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [
+    { name = "Vivek Gopalakrishnan", email = "vivekg@mit.edu" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "antspyx>=0.5.4",
+    "click>=8.1.8",
+    "diffdrr>=0.6.0",
+    "pydicom[pixeldata]>=3.0.1",
+    "wandb>=0.19.8",
+    "huggingface-hub>=0.29.3",
+]
+
+[project.scripts]
+xvr = "xvr.cli:cli"
+
+[project.urls]
+Repository = "https://github.com/eigenvivek/xvr"
+Issues = "https://github.com/eigenvivek/xvr/issues"
+
+[tool.ruff]
+extend-exclude = ["*.ipynb"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "black>=25.1.0",
+    "diffdrrdata>=0.0.7",
+    "isort>=6.0.1",
+    "jupyterlab-code-formatter>=3.0.2",
+    "jupyterlab-execute-time>=3.2.0",
+]
+docs = [
+    "zensical>=0.0.9",
+]
