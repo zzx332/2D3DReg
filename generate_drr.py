@@ -30,10 +30,11 @@ KWARGS = dict(
 )
 # Read in the volume and get its origin and spacing in world coordinates
 # subject = load_example_ct(bone_attenuation_multiplier=2.0)
-data_path = Path(r"D:\dataset\CTA_DSA\DeepFluoro\xvr-data\deepfluoro\subject01")
-volume = data_path / "volume.nii.gz"
-mask = data_path / "mask.nii.gz"
-pose, *_ = torch.load(data_path / "xrays" / "010.pt", weights_only=False)["pose"]
+data_path = Path(r"D:\dataset\CTA_DSA\DeepFluoro\exp_liftreg\data\val\img")
+pose_path = Path(r"D:\dataset\CTA_DSA\DeepFluoro\exp_liftreg\data\val\drr")
+volume = data_path / "subject01_source.nii.gz"
+mask = data_path / "subject01_source_seg.nii.gz"
+pose, *_ = torch.load(pose_path / "subject01_pose.pt", weights_only=False)["pose"]
 pose = RigidTransform(pose).cuda()
 # subject = read(volume, mask)
 # Initialize the DRR module for generating synthetic X-rays
