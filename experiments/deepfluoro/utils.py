@@ -29,7 +29,8 @@ def get_training_frames(subject_id):
     if subject_id == 1:
         frames = [10, 9]
     elif subject_id == 2:
-        frames = [29, 31]
+        # frames = [29, 31]
+        frames = [31]
     elif subject_id == 3:
         frames = [17, 22]
     elif subject_id == 4:
@@ -48,7 +49,7 @@ def load_dataset(subject_id, dataset="deepfluoro"):
     # data = f"{dataset}/subject{subject_id:02d}"
     # download_path = snapshot_download(repo_id="eigenvivek/xvr-data", repo_type="dataset", allow_patterns=[data])
     # datapath = Path(download_path) / data
-    datapath = Path(r"D:\dataset\CTA_DSA\DeepFluoro\xvr-data\deepfluoro\subject01")
+    datapath = Path(rf"/data/zhouzhexin/ctdsa/deepfluoro/subject{subject_id:02d}")
 
     # Make paths to the relevant images
     volume = datapath / "volume.nii.gz"

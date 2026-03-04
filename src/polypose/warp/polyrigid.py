@@ -29,13 +29,15 @@ class PolyRigid(Warp):
         )[0]
         self.K, *_ = self.weights.shape
 
+
         # Initialize the log transforms for the articulated structures in the volume
         # self.poses_rot = torch.nn.Parameter(poses_rot if poses_rot is not None else torch.randn(self.K, 3) * 1e-8)
         # self.poses_xyz = torch.nn.Parameter(poses_xyz if poses_xyz is not None else torch.randn(self.K, 3) * 1e-8)
-        self.poses_rot = torch.nn.Parameter(poses_rot if poses_rot is not None else torch.randn(self.K, 3) * 0.05)
-        self.poses_xyz = torch.nn.Parameter(poses_xyz if poses_xyz is not None else torch.randn(self.K, 3) * 3.0)
-        # self.poses_rot = torch.nn.Parameter(poses_rot if poses_rot is not None else torch.randn(self.K, 3) * 0)
-        # self.poses_xyz = torch.nn.Parameter(poses_xyz if poses_xyz is not None else torch.randn(self.K, 3) * 0)
+        # self.poses_rot = torch.nn.Parameter(poses_rot if poses_rot is not None else torch.randn(self.K, 3) * 0.05)
+        # self.poses_xyz = torch.nn.Parameter(poses_xyz if poses_xyz is not None else torch.randn(self.K, 3) * 3.0)
+        self.poses_rot = torch.nn.Parameter(poses_rot if poses_rot is not None else torch.randn(self.K, 3) * 0)
+        self.poses_xyz = torch.nn.Parameter(poses_xyz if poses_xyz is not None else torch.randn(self.K, 3) * 0)
+
 
     @property
     def pose(self) -> RigidTransform:

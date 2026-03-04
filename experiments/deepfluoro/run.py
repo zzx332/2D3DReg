@@ -52,7 +52,7 @@ def main(subject_id, model_name):
 
     # Run the registration
     if model_name == "polypose":
-        model = fit_polypose(gt, poses, volume, mask, KWARGS)
+        model = fit_polypose(gt, poses, volume, mask, KWARGS, subject_id)
     elif model_name == "densexyz":
         model = fit_densexyz(gt, poses, volume, mask, KWARGS)
     elif model_name == "densese3":

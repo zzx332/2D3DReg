@@ -15,6 +15,7 @@ def fit_polypose(
     volume,  # Preoperative CT
     mask,  # CT segmentation mask
     drr_kwargs,  # X-ray imaging parameters
+    subject_id,  # Subject ID
 ):
     # Compute the weight field
     subject = read(volume, mask)
@@ -47,7 +48,7 @@ def fit_polypose(
 
         for itr in (pbar := tqdm(range(n_itrs), ncols=100)):
             with torch.no_grad():
-                img = model(poses)
+                img = model(poses, subject_id)
                 loss = imagesim(xt(gt), xt(img))
                 optimizer.zero_grad()
                 loss.mean().backward()
